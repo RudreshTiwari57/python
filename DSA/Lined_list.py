@@ -32,6 +32,20 @@ class linked_list:
 			current_node = current_node.next
 		previous_node.next = current_node.next
 
+def bubble_sort(linked_list):
+    """Sorts the linked list using bubble sort."""
+    if linked_list.head is None:
+        return  # No need to sort an empty list
+
+    end = None  # Track the end of the sorted portion
+    while end != linked_list.head:  # Loop until the entire list is sorted
+        current = linked_list.head
+        while current.next != end:  # Traverse the list up to the sorted portion
+            if current.data > current.next.data:
+                # Swap data instead of nodes
+                current.data, current.next.data = current.next.data, current.data
+            current = current.next
+        end = current  # Update the end to the last sorted node
 linked_lists = linked_list()
 linked_lists.Append(34)
 linked_lists.Append(10)
@@ -43,5 +57,6 @@ linked_lists.Display()
 linked_lists.delete(113)
 linked_lists.Display()
 linked_lists.Append(3546)
-linked_lists.Append(54654)
+linked_lists.Display()
+bubble_sort(linked_lists)
 linked_lists.Display()
